@@ -7,12 +7,30 @@
     <title>Web components</title>
 
     <script src="./components/index.js"></script>
+    <script src="./components/shadowDom.js"></script>
 </head>
 <body>
     <h1>Web components</h1>
 
+    <template id="template1">
+        <div>
+            <h2 class="titleattr">Titulo de mi componente</h2>
+            <p>contenido del componente normal</p>
+
+            <slot name="contenidoSlot"></slot>
+        </div>
+    </template>
+
     <primer-componente
         nombre="Angel"
     ></primer-componente>
+
+    <hr>
+
+    <shadow-dom
+        titleattr="Titulo de mi componente param"
+    >
+        <span slot="contenidoSlot">Este valor es desde un slot</span>
+    </shadow-dom>
 </body>
 </html>
