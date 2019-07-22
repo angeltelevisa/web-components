@@ -5,9 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Web components</title>
+    <link rel="stylesheet" href="styles.css">
+    <script async="async" type="text/javascript" src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
 
     <script src="./components/index.js"></script>
     <script src="./components/shadowDom.js"></script>
+
+    <script>
+        const RESULT = new Promise(() => {
+            window.googletag = window.googletag || {};
+            window.googletag.cmd = window.googletag.cmd || [];
+            window.googletag.cmd.push(() => {
+                // Configure general DFP behavior.
+                window.googletag.pubads().enableAsyncRendering();
+                window.googletag.pubads().disableInitialLoad();
+                window.googletag.pubads().enableSingleRequest();
+            });
+        });
+
+        window.googletag.cmd.push(() => {
+            const SLOT_LAYER = window.googletag.defineSlot('/5644/televisa.tudn/liveblogs/gran-final-mexico-vs-estados-unidos', [728, 90], 'ad_default_0')
+                .addService(window.googletag.pubads());
+            window.googletag.pubads()
+                .setTargeting("skey", (window.location.search.match(/skey=(\w+)/) || ["", ""])[1]);
+            window.googletag.enableServices();
+            window.googletag.display('ad_default_0');
+            setTimeout(() => window.googletag.pubads().refresh([SLOT_LAYER]), 400);
+        });
+    </script>
 </head>
 <body>
     <h1>Web components</h1>
@@ -32,5 +57,35 @@
     >
         <span slot="contenidoSlot">Este valor es desde un slot</span>
     </shadow-dom>
+
+    <div class="Ads">
+        <div class="Ads__wrapper Ads__wrapper-header">
+            <div class="Ads__title AdsBox">Publicidad</div>
+            <div class="Ads__container">
+                <div id="ad_default_0" data-google-query-id="CMv4r76MyeMCFQm_TwodYNcBMw">
+                    <div
+                        id="google_ads_iframe_/5644/televisa.tudn/liveblogs/gran-final-mexico-vs-estados-unidos_0__container__"
+                        style="border: 0pt none;"
+                    >
+                        <iframe
+                            id="google_ads_iframe_/5644/televisa.tudn/liveblogs/gran-final-mexico-vs-estados-unidos_0"
+                            title="3rd party ad content"
+                            name="google_ads_iframe_/5644/televisa.tudn/liveblogs/gran-final-mexico-vs-estados-unidos_0"
+                            scrolling="no"
+                            marginwidth="0"
+                            marginheight="0"
+                            style="border: 0px none; vertical-align: bottom;"
+                            srcdoc=""
+                            data-google-container-id="3"
+                            data-load-complete="true"
+                            width="320"
+                            height="50"
+                            frameborder="0"
+                        ></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

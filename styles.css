@@ -1,0 +1,41 @@
+.Ads {
+    align-items: center;
+    padding: 5px;
+    text-align: center;
+    visibility: visible;
+    width: 100%;
+}
+
+.Ads__wrapper-header, .Ads__wrapper-asideGrey {
+    margin-top: 0px;
+    padding: 2px 0 10px 0;
+}
+.Ads__wrapper-header, .Ads__wrapper-asideGrey {
+    padding: 10px 0 10px 0;
+    min-height: 99px;
+    background: transparent;
+}
+.Ads__wrapper, .Ads__wrapper-header, .Ads__wrapper-asideGrey, .Ads__wrapper-headerBlack, .Ads__wrapper-body, .Ads__wrapper-aside, .Ads__wrapper-native {
+    width: 100%;
+}
+
+.Ads__title {
+    font-family: roboto, sans-serif;
+    font-size: 10px;
+    letter-spacing: 0px;
+    line-height: 12px;
+    text-rendering: optimizeLegibility;
+    -moz-osx-font-smoothing: grayscale;
+    font-smoothing: antialiased;
+    -webkit-font-smoothing: antialiased;
+    text-shadow: rgba(0, 0, 0, 0.01) 0 0 1px;
+    color: #808080;
+    display: block;
+    margin: 5px 0;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.Ads__container {
+    padding-bottom: 15px;
+}
