@@ -7,17 +7,28 @@ class ShadowDom extends HTMLElement {
             mode: 'open'
         })
 
-        this.template = document.getElementById('template1')
-        this.notificacion = document.importNode(this.template.content, true)
-
         this.titleattr = ''
     }
 
     render() {
-        this.shadowRoot.appendChild(this.notificacion)
-        this.shadowRoot.querySelector('.titleattr').innerHTML = this.titleattr
-
+        // this.shadowRoot.appendChild(this.notificacion)
+        // this.shadowRoot.querySelector('.titleattr').innerHTML = this.titleattr
         console.log('render shadow-dom')
+
+        let addContainer = `
+            <div class="Ads">
+                <div class="Ads__wrapper Ads__wrapper-header">
+                    <div class="Ads__title AdsBox">Publicidad</div>
+                    <div class="Ads__container">
+                        <div id="ad_default_0" data-google-query-id="CMv4r76MyeMCFQm_TwodYNcBMw">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+        this.shadowRoot.innerHTML = addContainer;
+
+        console.log(this.shadowRoot.querySelector('#ad_default_0'))
     }
 
     connectedCallback() {
@@ -56,7 +67,7 @@ class ShadowDom extends HTMLElement {
             window.googletag.pubads()
                 .setTargeting("skey", (window.location.search.match(/skey=(\w+)/) || ["", ""])[1]);
             window.googletag.enableServices();
-            window.googletag.display('ad_default_0');
+            window.googletag.display(this.shadowRoot.querySelector('#ad_default_0'));
 
              /* TODO Agregar un mejor control como un async y await
              * Aqui tenia un setTimeOut para esperar respuesta y despues renderizar
