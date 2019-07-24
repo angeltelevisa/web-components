@@ -6,24 +6,64 @@ class PrimerComponente extends HTMLElement {
         this.ready = false
     }
 
-    connectedCallback() {
-        this.ready = true
-        this.innerHTML = this.saludo
+    render() {
+        let addContainer = `
+            <div class="Ads">
+                <div class="Ads__wrapper Ads__wrapper-header">
+                    <div class="Ads__title AdsBox">Publicidad</div>
+                    <div class="Ads__container">
+                        <div id="ad_default_0" data-google-query-id="CMv4r76MyeMCFQm_TwodYNcBMw">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+        this.innerHTML = addContainer;
     }
 
-    attributeChangedCallback(nombre, oldValue, newValue) {
-        // console.log(`${nombre} - ${oldValue} - ${newValue}`)
+    connectedCallback() {
+        this.render()
+        this.loadGPT()
+    }
 
-        if (nombre == 'nombre') {
-            this.saludo = `Hola ${newValue}`
-        }
-        if (this.ready) {
-            this.innerHTML = this.saludo
+    attributeChangedCallback(attr, oldValue, newValue) {
+        // console.log(`${nombre} - ${oldValue} - ${newValue}`)
+        if (attr === 'nombre') {
+            this.render()
         }
     }
 
     static get observedAttributes() {
         return ['nombre']
+    }
+
+    loadGPT() {
+        console.log('loadGPT');
+        window.googletag = window.googletag || {};
+        window.googletag.cmd = window.googletag.cmd || [];
+        window.googletag.cmd.push(() => {
+            // Configure general DFP behavior.
+            window.googletag.pubads().enableAsyncRendering();
+            window.googletag.pubads().disableInitialLoad();
+            window.googletag.pubads().enableSingleRequest();
+        });
+
+        window.googletag.cmd.push(() => {
+            console.log('push')
+            const SLOT_LAYER = window.googletag.defineSlot('/5644/televisa.tudn/liveblogs/gran-final-mexico-vs-estados-unidos', [728, 90], 'ad_default_0')
+                .addService(window.googletag.pubads());
+            window.googletag.pubads()
+                .setTargeting("skey", (window.location.search.match(/skey=(\w+)/) || ["", ""])[1]);
+            window.googletag.enableServices();
+            window.googletag.display('ad_default_0');
+
+            /* TODO Agregar un mejor control como un async y await
+            * Aqui tenia un setTimeOut para esperar respuesta y despues renderizar
+            */
+            window.googletag.pubads().refresh([SLOT_LAYER])
+        });
+
+        console.log('done...')
     }
 }
 

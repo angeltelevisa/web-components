@@ -20,7 +20,7 @@ class ShadowDom extends HTMLElement {
                 <div class="Ads__wrapper Ads__wrapper-header">
                     <div class="Ads__title AdsBox">Publicidad</div>
                     <div class="Ads__container">
-                        <div id="ad_default_0" data-google-query-id="CMv4r76MyeMCFQm_TwodYNcBMw">
+                        <div id="ad_default_1" data-google-query-id="CMv4r76MyeMCFQm_TwodYNcBMw">
                         </div>
                     </div>
                 </div>
@@ -28,7 +28,7 @@ class ShadowDom extends HTMLElement {
         `;
         this.shadowRoot.innerHTML = addContainer;
 
-        console.log(this.shadowRoot.querySelector('#ad_default_0'))
+        console.log(this.shadowRoot.querySelector('#ad_default_1'))
     }
 
     connectedCallback() {
@@ -62,12 +62,12 @@ class ShadowDom extends HTMLElement {
         });
 
         window.googletag.cmd.push(() => {
-            const SLOT_LAYER = window.googletag.defineSlot('/5644/televisa.tudn/liveblogs/gran-final-mexico-vs-estados-unidos', [728, 90], 'ad_default_0')
+            const SLOT_LAYER = window.googletag.defineSlot('/5644/televisa.tudn/liveblogs/gran-final-mexico-vs-estados-unidos', [728, 90], 'ad_default_1')
                 .addService(window.googletag.pubads());
             window.googletag.pubads()
                 .setTargeting("skey", (window.location.search.match(/skey=(\w+)/) || ["", ""])[1]);
             window.googletag.enableServices();
-            window.googletag.display(this.shadowRoot.querySelector('#ad_default_0'));
+            window.googletag.display(this.shadowRoot.querySelector('#ad_default_1'));
 
              /* TODO Agregar un mejor control como un async y await
              * Aqui tenia un setTimeOut para esperar respuesta y despues renderizar

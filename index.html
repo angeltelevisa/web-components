@@ -10,39 +10,17 @@
 
     <script src="./components/index.js"></script>
     <script src="./components/shadowDom.js"></script>
-
-    <script>
-        // const RESULT = new Promise(() => {
-        //     window.googletag = window.googletag || {};
-        //     window.googletag.cmd = window.googletag.cmd || [];
-        //     window.googletag.cmd.push(() => {
-        //         // Configure general DFP behavior.
-        //         window.googletag.pubads().enableAsyncRendering();
-        //         window.googletag.pubads().disableInitialLoad();
-        //         window.googletag.pubads().enableSingleRequest();
-        //     });
-        // });
-
-        // window.googletag.cmd.push(() => {
-        //     const SLOT_LAYER = window.googletag.defineSlot('/5644/televisa.tudn/liveblogs/gran-final-mexico-vs-estados-unidos', [728, 90], 'ad_default_0')
-        //         .addService(window.googletag.pubads());
-        //     window.googletag.pubads()
-        //         .setTargeting("skey", (window.location.search.match(/skey=(\w+)/) || ["", ""])[1]);
-        //     window.googletag.enableServices();
-        //     window.googletag.display('ad_default_0');
-        //     setTimeout(() => window.googletag.pubads().refresh([SLOT_LAYER]), 400);
-        // });
-    </script>
 </head>
 <body>
     <h1 id="mititle">Web components</h1>
 
+    <p>web component</p>
     <primer-componente
         nombre="Angel"
     ></primer-componente>
 
     <hr>
-
+    <p>web component - shadow-dom</p>
     <shadow-dom
         titleattr="Titulo de mi componente param"
     >
