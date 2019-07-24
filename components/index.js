@@ -12,7 +12,7 @@ class PrimerComponente extends HTMLElement {
     }
 
     attributeChangedCallback(nombre, oldValue, newValue) {
-        console.log(`${nombre} - ${oldValue} - ${newValue}`)
+        // console.log(`${nombre} - ${oldValue} - ${newValue}`)
 
         if (nombre == 'nombre') {
             this.saludo = `Hola ${newValue}`
