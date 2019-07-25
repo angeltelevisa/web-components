@@ -2,11 +2,14 @@ class PrimerComponente extends HTMLElement {
 
     constructor() {
         super()
-        this.saludo = 'hola...'
+
+        this.idAds = ''
         this.ready = false
     }
 
     render() {
+        console.log('id', this.idAds);
+
         let addContainer = `
             <div class="Ads">
                 <div class="Ads__wrapper Ads__wrapper-header">
@@ -22,19 +25,21 @@ class PrimerComponente extends HTMLElement {
     }
 
     connectedCallback() {
+        this.ready = true;
         this.render()
         this.loadGPT()
     }
 
     attributeChangedCallback(attr, oldValue, newValue) {
-        // console.log(`${nombre} - ${oldValue} - ${newValue}`)
-        if (attr === 'nombre') {
-            this.render()
+        // console.log(`${attr} - ${oldValue} - ${newValue}`)
+        console.log('connceted callback')
+        if (attr === 'idAds') {
+            this.idAds = newValue
         }
     }
 
     static get observedAttributes() {
-        return ['nombre']
+        return ['idAds']
     }
 
     loadGPT() {
